@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
 const bcrypt = require('bcrypt');
-const session = rquire("express-session");
+const session = require("express-session");
 
 // config
 const PORT = 3000;
