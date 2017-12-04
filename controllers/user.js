@@ -7,8 +7,8 @@ const User = require('../models/user.js');
 
 
 router.get('/', async (req,res) => {
-    // const allUsers = await User.find();
-    res.send("test");
+    const allUsers = await User.find();
+    res.send(allUsers);
 });
 
 
