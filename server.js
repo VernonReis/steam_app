@@ -4,12 +4,14 @@ const app = express();
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
+const bcrypt = require('bcrypt');
+const session = rquire("express-session");
 
 // config
 const PORT = 3000;
 
 // db
-const mongoURI = 'mongodb://localhost:27017/photo_comments';
+const mongoURI = 'mongodb://localhost:27017/user_apps';
 mongoose.connect(mongoURI, { useMongoClient: true });
 mongoose.Promise = global.Promise;
 
@@ -25,3 +27,14 @@ app.use(express.json());
 app.use(express.static('public'));
 app.use(methodOverride('_method'));
 app.use(morgan('dev'));
+
+// Session variable
+app.use(session({
+    secret: "190fac13b3ee001ed103582abadf06",
+    resave: false,
+    saveUninitialized: false
+}));
+
+// controllers
+const userController = require('./controllers/user.js');
+app.use('/user', userController);
