@@ -11,7 +11,7 @@ const session = rquire("express-session");
 const PORT = 3000;
 
 // db
-const mongoURI = 'mongodb://localhost:27017/user_apps';
+const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/grocery_app_dev';
 mongoose.connect(mongoURI, { useMongoClient: true });
 mongoose.Promise = global.Promise;
 
