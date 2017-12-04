@@ -8,10 +8,10 @@ const bcrypt = require('bcrypt');
 const session = require("express-session");
 
 // config
-const PORT = 3000;
+const PORT = 80;
 
 // db
-const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/grocery_app_dev';
+const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/user_library';
 mongoose.connect(mongoURI, { useMongoClient: true });
 mongoose.Promise = global.Promise;
 
@@ -38,3 +38,14 @@ app.use(session({
 // controllers
 const userController = require('./controllers/user.js');
 app.use('/user', userController);
+
+
+
+// root route
+app.get('/', (req, res) => res.redirect('/user'));
+// :ear
+app.listen(PORT, () => {
+  console.log('===========================');
+  console.log('Photo app on port: ', PORT);
+  console.log('===========================');
+});
