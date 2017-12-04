@@ -31,14 +31,33 @@ router.get('/', async (req, res) => {
     }).exec({
         // An unexpected error occurred.
         error: (err) => {
-
+            res.send(err);
         },
         // OK.
         success: (result) => {
-            res.send(result);
+            res.render('show.ejs', {games: result.games});
         },
     });
 });
 
 
-module.exports = router;
+router.get('/:id', async (req, res) => {
+    Steam.getOwnedGames({
+        steamid: req.params.id,
+        key: apiKey,
+        include_appinfo: 1,
+        appids_filter: [440, 500, 550],
+    }).exec({
+        // An unexpected error occurred.
+        error: (err) => {
+
+        },
+        // OK.
+        success: (result) => {
+            res.render('show.ejs', {games: result.games});
+        },
+    });
+});
+
+
+    module.exports = router;
