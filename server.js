@@ -46,6 +46,6 @@ app.get('/', (req, res) => res.redirect('/user'));
 // :ear
 app.listen(PORT, () => {
   console.log('===========================');
-  console.log('Photo app on port: ', PORT);
+  console.log('Steam app on port: ', PORT);
   console.log('===========================');
 });
