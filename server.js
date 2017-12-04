@@ -8,7 +8,7 @@ const bcrypt = require('bcrypt');
 const session = require("express-session");
 
 // config
-const PORT = 80;
+const PORT = 3000;
 
 // db
 const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/user_library';
