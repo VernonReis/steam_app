@@ -1,7 +1,7 @@
 const mongoose = require ('mongoose');
 
 const userSchema = mongoose.Schema({
-    username: {type: String, require: true},
+    username: {type: String, require: true, index: {unique: true}},
     password: {type: String, require: true},
     steamId: String
 });
