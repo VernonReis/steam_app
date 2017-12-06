@@ -13,13 +13,14 @@
 
   <div id="container">
 
+  <% if (hasGames) { %>
     <% for (game of games) { %>
       <div class="entry">
-      <p><%= game.name %></p>
+      <p><%= game.title %></p>
       <img src="http://media.steampowered.com/steamcommunity/public/images/apps/<%= game.appid %>/<%= game.img_logo_url %>.jpg">
       </div>
     <% } %>
-
+  <% } %>
   </div>  
   </body>
 </html>

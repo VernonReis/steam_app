@@ -36,43 +36,39 @@ router.get('/', async (req, res) => {
 });
 
 
-router.get('/games/new', async (req, res) => {
-    res.render('new.ejs');    
+router.get('/games', async (req, res) => {
+    const games = await Library.find({ userId: req.session.userId });
+    console.log(games);
+    res.render('show.ejs', { hasGames: true, games });
 });
 
-router.post('games/new', async (req,res) =>
-{
-    if(req.session.isLogged)
-    {
-    router.post('/register', async (req, res) => {
-        
-        
-            const newGame = {};
-            newGame.title = req.body.username;
-            newGame.imageUrl = passHash;
-        
-            try {
-                const userLibrary = await Library.findOne({userID: req.session.user });
+router.get('/games/new', async (req, res) => {
+    res.render('new.ejs');
+});
 
-                userLibrary.libary.push()
-                const user = await User.create(newGame);
-                
-                // Instantiate a library for the user
-                const newLibrary = {};
-        
-                req.session.username = user.username;
-                req.session.isLogged = true;
-                res.redirect('/');
+router.post('/games/new', async (req, res) => {
+    
+    if (req.session.isLogged == true) {
+
+            const newGame = {};
+            newGame.title = req.body.title;
+            newGame.imageUrl = req.body.url;
+            newGame.isFavorite = false;
+            newGame.userId = req.session.userId;
+            console.log(newGame.userId);
+
+            try {
+                const game = await Library.create(newGame);
+                res.redirect('/user/games');
             } catch (err) {
+                console.log(err);
                 req.session.message = 'User creation failed';
                 res.render('/user/register', { duplicateUser: true });
             }
-        });
-    }
-    else
-    {
-        redirect('/login');
-    }
+        }
+        else {
+            res.redirect('/user/login');
+        }    
 });
 
 
@@ -119,14 +115,8 @@ router.post('/register', async (req, res) => {
 
     try {
         const user = await User.create(newUser);
-        
-        // Instantiate a library for the user
-        const newLibrary = {};
-        newLibrary.userId = user._id;
-        newLibrary.isPublic = false;
-        newLibrary.libary = [];
 
-        const library = Library.create(newLibrary);
+
 
         req.session.username = user.username;
         req.session.isLogged = true;
