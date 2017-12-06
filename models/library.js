@@ -2,14 +2,17 @@ const mongoose = require ('mongoose');
 
 
 const gameSchema = mongoose.Schema({
-
+    title: {type: String, require: true},
+    img: String,
+    isFavorite: Boolean,
+    libraryId: { type: mongoose.Schema.Types.ObjectId, ref: 'Library'}
 });
 
 const librarySchema = mongoose.Schema({
-    username: {type: String, require: true},
-    password: {type: String, require: true},
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+    isPublic: {type: Boolean, require: true},
     library: {type: gameSchema}
 });
 
 
-module.exports = mongoose.model('User',userSchema);
+module.exports = mongoose.model('Library',librarySchema);

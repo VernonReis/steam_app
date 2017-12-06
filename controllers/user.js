@@ -14,13 +14,36 @@ const apiKey = process.env.APIKEY || require("../apiKey.js");
 
 
 
-// router.get('/', async (req, res) => {
-//     allUsers = request("http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=" + apiKey + "&steamid=76561197960434622&format=json", (error, response, body) => {
-//         test = JSON.parse(body);
-//         res.send(test);
-//     });
-//     // res.send(allUsers);
-// });
+router.get('/', async (req, res) => {
+
+    Steam.getOwnedGames({
+        steamid: '76561197989223555',
+        key: apiKey,
+        include_appinfo: 1,
+        appids_filter: [440, 500, 550],
+    }).exec({
+        // An unexpected error occurred.
+        error: (err) => {
+            res.send(err);
+        },
+        // OK.
+        success: (result) => {
+            res.send(result);
+            // res.render('index.ejs', { games: result.games });
+        }
+    });
+});
+
+
+router.get('/games/new', async (req, res) => {
+    res.render('new.ejs');    
+});
+
+
+router.get('/login', async (req, res) => {
+
+    res.render('login.ejs');
+});
 
 router.post('/login', async (req, res) => {
 
@@ -42,6 +65,12 @@ router.post('/login', async (req, res) => {
     }
 });
 
+
+router.get('/register', async (req, res) => {
+
+    res.render('register.ejs');
+});
+
 router.post('/register', async (req, res) => {
 
     const pass = req.body.password;
@@ -53,34 +82,39 @@ router.post('/register', async (req, res) => {
 
     try {
         const user = await User.create(newUser);
+        
+        // Instantiate a library for the user
+        const newLibrary = {};
+
         req.session.username = user.username;
         req.session.isLogged = true;
         res.redirect('/');
     } catch (err) {
         req.session.message = 'User creation failed';
+        res.render('/user/register', { duplicateUser: true });
     }
 });
 
 
 
 
-router.get('/', async (req, res) => {
-    Steam.getOwnedGames({
-        steamid: '76561197989223555',
-        key: apiKey,
-        include_appinfo: 1,
-        appids_filter: [440, 500, 550],
-    }).exec({
-        // An unexpected error occurred.
-        error: (err) => {
-            res.send(err);
-        },
-        // OK.
-        success: (result) => {
-            res.render('show.ejs', { games: result.games });
-        },
-    });
-});
+// router.get('/', async (req, res) => {
+//     Steam.getOwnedGames({
+//         steamid: '76561197989223555',
+//         key: apiKey,
+//         include_appinfo: 1,
+//         appids_filter: [440, 500, 550],
+//     }).exec({
+//         // An unexpected error occurred.
+//         error: (err) => {
+//             res.send(err);
+//         },
+//         // OK.
+//         success: (result) => {
+//             res.render('show.ejs', { games: result.games });
+//         }
+//     });
+// });
 
 
 router.get('/:id', async (req, res) => {
