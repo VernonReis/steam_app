@@ -19,6 +19,11 @@
       <p><%= game.title %></p>
       <img src="http://media.steampowered.com/steamcommunity/public/images/apps/<%= game.appid %>/<%= game.img_logo_url %>.jpg">
       <a href="/user/games/edit/<%= game._id %>">Edit</a>
+      <form action="/user/games/delete?_method=DELETE" method="post">
+        <input type="submit" value="Remove from library">
+        <input type="hidden" name="id" value="<%= game._id %>">
+      </form>
+
       </div>
     <% } %>
   <% } %>

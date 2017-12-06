@@ -95,6 +95,11 @@ router.post('/games/edit', async (req, res) => {
         }    
 });
 
+router.delete('/games/delete', async (req, res ) => {
+    await Library.remove({_id: req.body.id});
+    res.redirect('/user/games');
+});
+
 
 router.get('/login', async (req, res) => {
 
