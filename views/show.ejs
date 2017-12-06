@@ -18,6 +18,7 @@
       <div class="entry">
       <p><%= game.title %></p>
       <img src="http://media.steampowered.com/steamcommunity/public/images/apps/<%= game.appid %>/<%= game.img_logo_url %>.jpg">
+      <a href="/user/games/edit/<%= game._id %>">Edit</a>
       </div>
     <% } %>
   <% } %>

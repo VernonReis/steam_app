@@ -46,6 +46,11 @@ router.get('/games/new', async (req, res) => {
     res.render('new.ejs');
 });
 
+router.get('/games/edit/:id', async (req, res) => {
+    const game = await Library.findOne({_id: req.params.id});
+    res.render('edit.ejs', {game})
+});
+
 router.post('/games/new', async (req, res) => {
     
     if (req.session.isLogged == true) {
@@ -71,6 +76,25 @@ router.post('/games/new', async (req, res) => {
         }    
 });
 
+router.post('/games/edit', async (req, res) => {
+    
+    if (req.session.isLogged == true) {
+
+            await Library.update({_id: req.body.id},{$set: {title: req.body.title, url: req.body.image}})
+
+            try {
+                const game = await Library.create(newGame);
+                res.redirect('/user/games');
+            } catch (err) {
+                console.log(err);
+                res.redirect('/user/games');
+            }
+        }
+        else {
+            res.redirect('/user/login');
+        }    
+});
+
 
 router.get('/login', async (req, res) => {
 
@@ -87,7 +111,7 @@ router.post('/login', async (req, res) => {
             req.session.message = '';
             req.session.userId = user._id;
 
-            res.redirect('/')
+            res.redirect('/user/games')
         } else {
             req.session.message = 'Incorrect username or password';
             res.redirect('/user/login');
