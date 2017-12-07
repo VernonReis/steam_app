@@ -1,3 +1,16 @@
+
+body {
+    font-family: "Motiva Sans", Sans-serif;
+    font-weight: normal;
+    background-color: #171A21;
+    color: rgb(240, 239, 238);
+}
+
+a {
+    color: rgb(240, 239, 238);
+}
+
+
 .gameImage {
     height: 150px;
     width: 200px;
@@ -17,11 +30,21 @@
     border: 1px solid black;
     margin: 5px;
     text-align: center;
+
+}
+
+nav {
+    width: 100%;
+    text-align: center;
+    height: 20px;
+    margin-bottom: 5px;
 }
 
 #container {
     width: 100%;
     border: 1px solid black;
+    text-align: center;
+    background-color: #1A4762;
 }
 
 #entryContainer {
@@ -50,9 +73,20 @@ button {
     border: 1px solid black;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 5px;
 }
 
 #logout a {
     line-height: 80px;
+    background-color: #377197;
+    padding: 7px 12px 7px 12px;
+    border-radius: 3px;
+    margin-right: 10px;
+    text-decoration: none;
+    color: rgb(240, 239, 238);
+
+    background: linear-gradient(#377197, #175579);
+    
 }
+
 

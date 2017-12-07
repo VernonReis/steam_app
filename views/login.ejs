@@ -7,17 +7,24 @@
   </head>
   <body>
 
-
+  <div id="topBar">
+    <div id="pageTitle">
+      <h1>Login</h1>
+    </div>
+    <div id="logout">
+    </div>
+  </div>
 
   <div id="container">
 
 
 
     <form action="/user/login" method="post">
-        Username: <input name="username" required /> <br />
-        Password: <input type="password" name="password" required /><br />
-
-        <button type="submit">Submit</button>
+    <div>
+        Username: <input name="username" required />
+        Password: <input type="password" name="password" required />
+    </div>
+        <button type="submit">Log In</button>
     </form>
 
     <form action="/user/register" method="get">
@@ -27,4 +34,7 @@
 
   </div>  
   </body>
+
+
+
 </html>
