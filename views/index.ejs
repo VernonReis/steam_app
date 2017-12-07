@@ -36,11 +36,7 @@
             <% console.log(typeof game.title) %>
           </div>
         
-          <a href="/user/games/edit/<%= game._id %>">Edit</a>
-          <form action="/user/games/delete?_method=DELETE" method="post">
-            <input type="submit" value="Remove from library">
-            <input type="hidden" name="id" value="<%= game._id %>">
-          </form>
+          <a href="/user/games/<%= game._id %>">View Details</a>
 
         </div>
       <% } %>

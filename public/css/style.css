@@ -69,6 +69,14 @@ input {
 
 button {
     margin: 5px auto 5px auto;
+    background-color: #698406;
+    border-radius: 3px;
+    margin-right: 10px;
+    text-decoration: none;
+    color: rgb(240, 239, 238);
+    border: none;
+    height: 30px;
+    background: linear-gradient(#82a105, #4d5e01);
 }
 
 #topBar {

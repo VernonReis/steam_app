@@ -50,6 +50,8 @@ router.get('/games', async (req, res) => {
     }
 });
 
+
+
 router.get('/games/new', async (req, res) => {
     if (req.session.isLogged == true) {
     res.render('new.ejs');
@@ -71,6 +73,8 @@ router.get('/games/edit/:id', async (req, res) => {
     }
 });
 
+
+
 router.post('/games/new', async (req, res) => {
     
     if (req.session.isLogged == true) {
@@ -78,7 +82,6 @@ router.post('/games/new', async (req, res) => {
             const newGame = {};
             newGame.title = req.body.title;
             newGame.img = req.body.image;
-            console.log("00000000000000000000000000000000000000000000000000",req.body.image);
             newGame.rating = req.body.rating;
             newGame.description = req.body.description;
             console.log(req.body.description)
@@ -208,6 +211,8 @@ router.get('/logout',  (req, res) => {
 
 
 
+
+
 // router.get('/', async (req, res) => {
 //     Steam.getOwnedGames({
 //         steamid: '76561197989223555',
@@ -243,6 +248,17 @@ router.get('/:id', async (req, res) => {
             res.render('index.ejs', { games: result.games });
         },
     });
+});
+
+router.get('/games/:id', async (req, res) => {
+    if (req.session.isLogged == true) {
+    const game = await Library.findOne({_id: req.params.id});
+    res.render('show.ejs', {game})
+    }
+    else
+    {
+        res.redirect("/user/login");
+    }
 });
 
 
