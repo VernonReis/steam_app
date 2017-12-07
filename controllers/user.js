@@ -77,7 +77,7 @@ router.post('/games/new', async (req, res) => {
 
             const newGame = {};
             newGame.title = req.body.title;
-            newGame.imageUrl = req.body.url;
+            newGame.img = req.body.image;
             newGame.isFavorite = false;
             newGame.userId = req.session.userId;
             console.log(newGame.userId);
