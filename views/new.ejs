@@ -17,21 +17,21 @@
   </div>
   <div id="container">
     
-<div id="entryInput">
+
     <form id="entryForm" action="/user/games/new" method="post">
-        <div>Game Title: <input type="text" name="title" required /> </div>
+        <div>Game Title <br/> <input type="text" name="title" required /> </div>
 
-        <div>Rating (1-10): <input type="number" name="rating" min="1" max="10" step="1" required /> </div>
+        <div>Rating (1-10) <br/> <input type="number" name="rating" min="1" max="10" step="1" required /> </div>
 
-        <div>Image URL (optional): <input type="URL" name="image" /> </div>
+        <div>Image URL (optional) <br/> <input type="URL" name="image" /> </div>
         
-        <div>Description: <br/><textarea rows="10" cols="30" name="description" form="entryForm" style="overflow:hidden">asdfasdfasdf</textarea><div>
+        <div>Description <br/><textarea rows="10" cols="50" name="description" form="entryForm" style="overflow:hidden"></textarea><div>
 
-        <button type="submit">Submit</button>
+        <button type="submit">Add to Library</button>
     </form>
-</div>
 
-    <a href="/user/games/import">Import my Steam Library</a>
+
+
 
   </div>  
   </body>

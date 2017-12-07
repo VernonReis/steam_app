@@ -7,9 +7,15 @@
   </head>
   <body>
 
-  <div id="topBar">
-  <a href="/user/logout">Logout</a>
+ <div id="topBar">
+    <div id="pageTitle">
+      <h1>Edit Game Entry</h1>
+    </div>
+    <div id="logout">
+      <a href="/user/logout">Logout</a>
+    </div>
   </div>
+  <div id="container">
 
   <div id="container">
     
@@ -24,7 +30,7 @@
 
         <div>Image URL (optional): <input type="URL" name="image" value="<%= game.img %>"/> </div>
         
-        <div>Description: <br/><textarea rows="10" cols="30" name="description" form="entryForm" style="overflow:hidden"><%= game.description %></textarea><div>
+        <div>Description: <br/><textarea rows="10" cols="50" name="description" form="entryForm" style="overflow:hidden"><%= game.description %></textarea><div>
          <input type="hidden" name="id" value="<%= game._id %>">
 
         <button type="submit">Submit</button>

@@ -9,7 +9,7 @@
 
   <div id="topBar">
     <div id="pageTitle">
-      <h1>User Games</h1>
+      <h1>My Games</h1>
     </div>
     <div id="logout">
       <a href="/user/logout">Logout</a>
@@ -20,8 +20,13 @@
 
 
   <nav>
-  <a href="/user/games/new" >Add New Game to Library</a>
+
+    <form action="/user/games/new" method="get">
+      <input class="buttonGreen" type="submit" value="Add Game to Library">
+    </form>
+
   </nav>
+
   <div id="entryContainer">
     <% if (hasGames) { %>
       <% for (game of games) { %>
@@ -36,7 +41,10 @@
             <% console.log(typeof game.title) %>
           </div>
         
-          <a href="/user/games/<%= game._id %>">View Details</a>
+
+          <form action="/user/games/<%= game._id %>" method="get">
+            <input class="buttonGreen" type="submit" value="View Details">
+          </form>
 
         </div>
       <% } %>

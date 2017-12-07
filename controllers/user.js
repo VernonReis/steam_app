@@ -127,8 +127,8 @@ router.post('/games/edit', async (req, res) => {
 });
 
 
-router.post('/games/import', async (req, res) => {
-    res.redirect('/games/import/'+req.body.steamId);
+router.get('/games/import', async (req, res) => {
+    res.render('import.ejs');
 });
 
 router.get('/games/import/:id', async (req, res) => {
@@ -177,7 +177,7 @@ router.post('/login', async (req, res) => {
 
 router.get('/register', async (req, res) => {
 
-    res.render('register.ejs');
+    res.render('register.ejs', {duplicateUser: false});
 });
 
 router.post('/register', async (req, res) => {
@@ -199,7 +199,7 @@ router.post('/register', async (req, res) => {
         res.redirect('/');
     } catch (err) {
         req.session.message = 'User creation failed';
-        res.render('/user/register', { duplicateUser: true });
+        res.render('register.ejs', { duplicateUser: true });
     }
 });
 

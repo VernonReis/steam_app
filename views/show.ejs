@@ -17,24 +17,39 @@
   </div>
   <div id="container">
     
-    <h1>Game Entry</h1>
+    <h1><%= game.title %></h1>
 
 
 
 <div>
-        <div>Game Title: <%= game.title %></div>
 
-        <div>Rating (1-10): <%= game.rating %></div>
+        <div class="gameStat" >Rating: <%= game.rating %></div>
 
-        <div>Image URL (optional): <%= game.img %></div>
-        
-        <div>Description: <br/><textarea rows="10" cols="30" name="description" form="entryForm" style="overflow:hidden" disabled><%= game.description %></textarea><div>
+        <div class="gameImage">
+          <% if (game.img != "") { console.log("baggy"); %>
+              <img src="<%= game.img %>" >
+              <% } else { %>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/450px-No_image_available.svg.png">
+              <% } %>
+        </div>
+        <div class="gameStat">Description: <br/><textarea rows="10" cols="50" name="description" form="entryForm" style="overflow:hidden" disabled><%= game.description %></textarea><div>
          
 
-         <a href="/user/games/edit/<%= game._id %>">Edit</a>
+
+
+          <form action="/user/games/edit/<%= game._id %>" method="get">
+            <input class="buttonGreen" type="submit" value="Edit">
+          </form>
+
           <form action="/user/games/delete?_method=DELETE" method="post">
-            <input type="submit" value="Remove from library">
+            <input class="buttonGreen" type="submit" value="Remove from library">
             <input type="hidden" name="id" value="<%= game._id %>">
+          </form>
+
+
+          <br/>
+          <form action="/user/games/" method="get">
+            <input class="buttonGreen" type="submit" value="Back">
           </form>
     </div>
 

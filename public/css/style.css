@@ -18,7 +18,6 @@ textarea {
 .gameImage {
     height: 150px;
     width: 200px;
-    border: 1px solid black;
     margin: auto;
 }
 
@@ -32,24 +31,25 @@ textarea {
 
 .entry {
     width: 210px;
-    border: 1px solid ;
+    border-radius: 10px;
     margin: 5px;
     text-align: center;
-
+    background-color: #091D36;
 }
 
 nav {
     width: 100%;
     text-align: center;
-    height: 20px;
+    height: 35px;
     margin-bottom: 5px;
 }
 
 #container {
     width: 100%;
-    border: 1px solid black;
+    min-width: 800px;
     text-align: center;
     background-color: #1A4762;
+    padding-bottom: 30px;
 }
 
 #entryContainer {
@@ -58,7 +58,6 @@ nav {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-    border: 1px solid black;
     margin-top: 10px;
     margin: auto;
 }
@@ -71,7 +70,6 @@ button {
     margin: 5px auto 5px auto;
     background-color: #698406;
     border-radius: 3px;
-    margin-right: 10px;
     text-decoration: none;
     color: rgb(240, 239, 238);
     border: none;
@@ -79,14 +77,41 @@ button {
     background: linear-gradient(#82a105, #4d5e01);
 }
 
+.buttonGreen {
+    margin: 5px auto 5px auto;
+    background-color: #698406;
+    border-radius: 3px;
+    text-decoration: none;
+    color: rgb(240, 239, 238);
+    border: none;
+    height: 30px;
+    background: linear-gradient(#82a105, #4d5e01);
+}
+
+.buttonBlue {
+    margin: 5px auto 5px auto;
+    background-color: #377197;
+    border-radius: 3px;
+    margin-right: 10px;
+    text-decoration: none;
+    color: rgb(240, 239, 238);
+    border: none;
+    height: 30px;
+    background: linear-gradient(#377197, #175579);
+}
+
 #topBar {
     height: 80px;
     width: 100%;
     min-width: 800px;
-    border: 1px solid black;
     display: flex;
     justify-content: space-between;
     margin-bottom: 5px;
+    background-color: #1B2838;
+}
+
+#pageTitle {
+    margin-left: 10px;
 }
 
 #logout a {
@@ -107,5 +132,18 @@ button {
     width: 400px;
     text-align: left;
     margin: auto;
+
 }
 
+h5 {
+    color: red;
+}
+
+.gameStat {
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+#userPass {
+    padding-top: 15px;
+}
