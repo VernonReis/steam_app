@@ -1,7 +1,58 @@
 .gameImage {
-    width: 400px;
+    height: 150px;
+    width: 200px;
+    border: 1px solid black;
+    vertical-align: middle;
 }
 
 .gameImage > img {
-    width: inherit;
+    vertical-align: middle;
+    display: inline-block;
+    margin: auto;
+    max-width: 200px;
 }
+
+.entry {
+    width: 210px;
+    border: 1px solid black;
+    margin: 5px;
+    text-align: center;
+}
+
+#container {
+    width: 100%;
+    border: 1px solid black;
+}
+
+#entryContainer {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border: 1px solid black;
+    margin-top: 10px;
+    margin: auto;
+}
+
+input {
+    margin: 5px auto 5px auto;
+}
+
+button {
+    margin: 5px auto 5px auto;
+}
+
+#topBar {
+    height: 80px;
+    width: 100%;
+    min-width: 800px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+}
+
+#logout a {
+    line-height: 80px;
+}
+
