@@ -1,0 +1,7 @@
+.gameImage {
+    width: 400px;
+}
+
+.gameImage > img {
+    width: inherit;
+}

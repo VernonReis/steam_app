@@ -11,12 +11,20 @@
 
   <div id="container">
 
+  <div id="topBar">
+  <a href="/user/logout">Logout</a>
+
     <form action="/user/login" method="post">
         Username: <input name="username" /> <br />
         Password: <input name="password" /><br />
 
         <button type="submit">Submit</button>
-      </form>
+    </form>
+
+    <form action="/user/register" method="get">
+      <button type="submit">Sign Up</button>
+    </form>
+
 
   </div>  
   </body>

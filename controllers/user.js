@@ -17,38 +17,58 @@ const apiKey = process.env.APIKEY || require("../apiKey.js");
 
 router.get('/', async (req, res) => {
 
-    Steam.getOwnedGames({
-        steamid: '76561197989223555',
-        key: apiKey,
-        include_appinfo: 1,
-        appids_filter: [440, 500, 550],
-    }).exec({
-        // An unexpected error occurred.
-        error: (err) => {
-            res.send(err);
-        },
-        // OK.
-        success: (result) => {
-            res.send(result);
-            // res.render('index.ejs', { games: result.games });
-        }
-    });
+
+    res.redirect('/user/login');
+    // Steam.getOwnedGames({
+    //     steamid: '76561197989223555',
+    //     key: apiKey,
+    //     include_appinfo: 1,
+    //     appids_filter: [440, 500, 550],
+    // }).exec({
+    //     // An unexpected error occurred.
+    //     error: (err) => {
+    //         res.send(err);
+    //     },
+    //     // OK.
+    //     success: (result) => {
+    //         res.send(result);
+    //         // res.render('index.ejs', { games: result.games });
+    //     }
+    // });
 });
 
 
 router.get('/games', async (req, res) => {
+    if (req.session.isLogged == true) {
     const games = await Library.find({ userId: req.session.userId });
     console.log(games);
     res.render('show.ejs', { hasGames: true, games });
+    }
+    else
+    {
+        res.redirect("/user/login");
+    }
 });
 
 router.get('/games/new', async (req, res) => {
+    if (req.session.isLogged == true) {
     res.render('new.ejs');
+    }
+    else
+    {
+        res.redirect("/user/login");
+    }
 });
 
 router.get('/games/edit/:id', async (req, res) => {
+    if (req.session.isLogged == true) {
     const game = await Library.findOne({_id: req.params.id});
     res.render('edit.ejs', {game})
+    }
+    else
+    {
+        res.redirect("/user/login");
+    }
 });
 
 router.post('/games/new', async (req, res) => {
@@ -80,7 +100,7 @@ router.post('/games/edit', async (req, res) => {
     
     if (req.session.isLogged == true) {
 
-            await Library.update({_id: req.body.id},{$set: {title: req.body.title, url: req.body.image}})
+            await Library.update({_id: req.body.id},{$set: {title: req.body.title, img: req.body.image}})
 
             try {
                 const game = await Library.create(newGame);
@@ -94,6 +114,22 @@ router.post('/games/edit', async (req, res) => {
             res.redirect('/user/login');
         }    
 });
+
+
+router.post('/games/import', async (req, res) => {
+    res.redirect('/games/import/'+req.body.steamId);
+});
+
+router.get('/games/import/:id', async (req, res) => {
+    if (req.session.isLogged == true) {
+    res.redirect('/games/import/'+req.body.steamId);
+    }
+    else
+    {
+        res.redirect("/user/login");
+    }
+});
+
 
 router.delete('/games/delete', async (req, res ) => {
     await Library.remove({_id: req.body.id});
