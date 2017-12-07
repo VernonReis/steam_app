@@ -42,7 +42,7 @@ router.get('/games', async (req, res) => {
     if (req.session.isLogged == true) {
     const games = await Library.find({ userId: req.session.userId });
     console.log(games);
-    res.render('show.ejs', { hasGames: true, games });
+    res.render('index.ejs', { hasGames: true, games });
     }
     else
     {
@@ -78,7 +78,10 @@ router.post('/games/new', async (req, res) => {
             const newGame = {};
             newGame.title = req.body.title;
             newGame.img = req.body.image;
-            newGame.isFavorite = false;
+            console.log("00000000000000000000000000000000000000000000000000",req.body.image);
+            newGame.rating = req.body.rating;
+            newGame.description = req.body.description;
+            console.log(req.body.description)
             newGame.userId = req.session.userId;
             console.log(newGame.userId);
 
@@ -100,7 +103,12 @@ router.post('/games/edit', async (req, res) => {
     
     if (req.session.isLogged == true) {
 
-            await Library.update({_id: req.body.id},{$set: {title: req.body.title, img: req.body.image}})
+            await Library.update({_id: req.body.id},{$set: {
+                title: req.body.title,
+                img: req.body.image,
+                rating: req.body.rating,
+                description: req.body.description}
+            });
 
             try {
                 const game = await Library.create(newGame);
@@ -232,7 +240,7 @@ router.get('/:id', async (req, res) => {
         },
         // OK.
         success: (result) => {
-            res.render('show.ejs', { games: result.games });
+            res.render('index.ejs', { games: result.games });
         },
     });
 });

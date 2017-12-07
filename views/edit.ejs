@@ -13,15 +13,22 @@
 
   <div id="container">
     
-    <h1>Add New Game to Library</h1>
+    <h1>Edit Game Entry</h1>
 
-    <form action="/user/games/edit" method="post">
-        Game Title: <input type="text" name="title" value="<%= game.title %>" required/> <br />
-        Image URL (optional): <input type="URL" name="image" value="<%= game.img %>" /><br />
-        <input type="hidden" name="id" value="<%= game._id %>">
 
-        <button type="submit">Submit Changes</button>
-      </form>
+
+          <form id="entryForm" action="/user/games/edit" method="post">
+        <div>Game Title: <input type="text" name="title" value="<%= game.title %>" required /> </div>
+
+        <div>Rating (1-10): <input type="number" name="rating" min="1" max="10" step="1" value="<%= game.rating %>" required /> </div>
+
+        <div>Image URL (optional): <input type="URL" name="image" value="<%= game.img %>"/> </div>
+        
+        <div>Description: <br/><textarea rows="10" cols="30" name="description" form="entryForm" style="overflow:hidden"><%= game.description %></textarea><div>
+         <input type="hidden" name="id" value="<%= game._id %>">
+
+        <button type="submit">Submit</button>
+    </form>
 
   </div>  
   </body>

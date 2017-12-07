@@ -7,22 +7,45 @@
   </head>
   <body>
 
-  <div id="topbar">
-
+  <div id="topBar">
+    <div id="pageTitle">
+      <h1>User Games</h1>
+    </div>
+    <div id="logout">
+      <a href="/user/logout">Logout</a>
+    </div>
   </div>
 
   <div id="container">
-    
-    <h1>My Games</h1>
-    <% for (game of games) { %>
-      <div class="entry">
-      <p><%= game.name %></p>
-      <img src="http://media.steampowered.com/steamcommunity/public/images/apps/<%= game.appid %>/<%= game.img_logo_url %>.jpg">
-      </div>
+
+
+  <nav>
+  <a href="/user/games/new" >Add New Game to Library</a>
+  </nav>
+  <div id="entryContainer">
+    <% if (hasGames) { %>
+      <% for (game of games) { %>
+        <div class="entry">
+          <p><%= game.title %></p>
+          <div class="gameImage">
+            <% if (game.img != "") { console.log("baggy"); %>
+            <img src="<%= game.img %>" >
+            <% } else { %>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/450px-No_image_available.svg.png">
+            <% } %>
+            <% console.log(typeof game.title) %>
+          </div>
+        
+          <a href="/user/games/edit/<%= game._id %>">Edit</a>
+          <form action="/user/games/delete?_method=DELETE" method="post">
+            <input type="submit" value="Remove from library">
+            <input type="hidden" name="id" value="<%= game._id %>">
+          </form>
+
+        </div>
+      <% } %>
     <% } %>
-
-    <a href="/import">Import My Steam Library</a>
-
+  </div>
   </div>  
   </body>
 </html>

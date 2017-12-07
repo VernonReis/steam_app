@@ -11,23 +11,28 @@ a {
 }
 
 
+textarea {
+    resize: none;
+}
+
 .gameImage {
     height: 150px;
     width: 200px;
     border: 1px solid black;
-    vertical-align: middle;
+    margin: auto;
 }
 
 .gameImage > img {
     vertical-align: middle;
     display: inline-block;
     margin: auto;
-    max-width: 200px;
+    max-width: 202px;
+    max-height: 152px;
 }
 
 .entry {
     width: 210px;
-    border: 1px solid black;
+    border: 1px solid ;
     margin: 5px;
     text-align: center;
 
@@ -89,4 +94,10 @@ button {
     
 }
 
+
+#entryInput {
+    width: 400px;
+    text-align: left;
+    margin: auto;
+}
 
