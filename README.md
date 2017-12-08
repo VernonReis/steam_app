@@ -6,4 +6,4 @@ The one other feature that I would have liked to include would have been a one t
 
 
 UPDATE:
-I managed to implement the API a bit.  It doesn't work with the database but I think it demonstrates that I actually learned something trying to get it to work all week.  See the /user/test page
+I managed to implement the API a bit.  It doesn't work with the database but I think it demonstrates that I actually learned something trying to get it to work all week.  See the /test page

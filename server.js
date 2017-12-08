@@ -37,6 +37,8 @@ app.use(session({
 
 // controllers
 const userController = require('./controllers/user.js');
+const testController = require('./controllers/test.js');
+app.use('/test', testController);
 app.use('/user', userController);
 
 
