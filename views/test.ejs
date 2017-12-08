@@ -27,7 +27,7 @@
       <p><%= game.name %></p>
       <img src="http://media.steampowered.com/steamcommunity/public/images/apps/<%= game.appid %>/<%= game.img_logo_url %>.jpg">
 
-      <form action="/user/games/test/game/<%= game._id %>" method="get">
+      <form action="/user/games/test/game/<%= game.id %>" method="get">
             <input class="buttonGreen" type="submit" value="View Details">
       </form>
       </div>
