@@ -44,6 +44,13 @@ router.get('/game/:id', async (req, res) => {
             description: game.data.detailed_description,
         }
 
+        try{
+            myGame.rating = "Metacritic Score of " + game.data.metacritic.score;
+        } catch (err)
+        {
+            // console.log(err);
+        }
+
         console.log(myGame.id);
 
         res.render('testshow.ejs', {game: myGame});
