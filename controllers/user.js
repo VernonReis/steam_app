@@ -242,12 +242,12 @@ router.get('/test/game/:id', async (req, res) => {
             title: game.data.name,
             img: game.data.header_image,
             rating: "",
-            description: game.data.short_description,
+            description: game.data.detailed_description,
         }
 
         console.log(myGame.id);
 
-        res.render('show.ejs', {game: myGame});
+        res.render('testshow.ejs', {game: myGame});
     });
     // res.send(allUsers);
 });

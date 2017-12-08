@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <title></title>
+  </head>
+  <body>
+
+ <div id="topBar">
+    <div id="pageTitle">
+      <h1>View Game</h1>
+    </div>
+    <div id="logout">
+      <a href="/user/logout">Logout</a>
+    </div>
+  </div>
+  <div id="container">
+    
+    <h1><%= game.title %></h1>
+
+
+
+<div>
+
+        <div class="gameStat" >Rating: <%= game.rating %></div>
+
+        <div class="gameImage">
+          <% if (game.img != "") { console.log("baggy"); %>
+              <img src="<%= game.img %>" >
+              <% } else { %>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/450px-No_image_available.svg.png">
+              <% } %>
+        </div>
+        <div class="gameStat">Description: <br/><%- game.description %><div>
+         
+
+
+
+          <form action="/user/games/edit/<%= game._id %>" method="get">
+            <input class="buttonGreen" type="submit" value="Edit">
+          </form>
+
+          <form action="/user/games/delete?_method=DELETE" method="post">
+            <input class="buttonGreen" type="submit" value="Remove from library">
+            <input type="hidden" name="id" value="<%= game._id %>">
+          </form>
+
+
+          <br/>
+          <form action="/user/games/" method="get">
+            <input class="buttonGreen" type="submit" value="Back">
+          </form>
+    </div>
+
+  </div>  
+  </body>
+</html>
