@@ -241,7 +241,7 @@ router.get('/test/game/:id', async (req, res) => {
         myGame = {
             title: game.data.name,
             img: game.data.header_image,
-            rating: "";
+            rating: "",
             description: game.data.short_description,
         }
 
