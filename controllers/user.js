@@ -41,7 +41,6 @@ router.get('/', async (req, res) => {
 router.get('/games', async (req, res) => {
     if (req.session.isLogged == true) {
     const games = await Library.find({ userId: req.session.userId });
-    console.log(games);
     res.render('index.ejs', { hasGames: true, games });
     }
     else
