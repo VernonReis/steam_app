@@ -7,14 +7,21 @@
   </head>
   <body>
 
-  <div id="topbar">
 
+ <div id="topBar">
+    <div id="pageTitle">
+      <h1>View Game</h1>
+    </div>
+    <div id="logout">
+      <a href="/user/games">Back</a>
+    </div>
   </div>
+  <div id="container">
 
   <div id="container">
     
     <div id="entryContainer">
-    <h1>My Games</h1>
+
     <% for (game of games) { %>
       <div class="entry">
       <p><%= game.name %></p>
