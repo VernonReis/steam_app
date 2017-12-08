@@ -213,23 +213,23 @@ router.get('/logout',  (req, res) => {
 
 
 
-// router.get('/', async (req, res) => {
-//     Steam.getOwnedGames({
-//         steamid: '76561197989223555',
-//         key: apiKey,
-//         include_appinfo: 1,
-//         appids_filter: [440, 500, 550],
-//     }).exec({
-//         // An unexpected error occurred.
-//         error: (err) => {
-//             res.send(err);
-//         },
-//         // OK.
-//         success: (result) => {
-//             res.render('show.ejs', { games: result.games });
-//         }
-//     });
-// });
+router.get('/test', async (req, res) => {
+    Steam.getOwnedGames({
+        steamid: '76561197989223555',
+        key: apiKey,
+        include_appinfo: 1,
+        appids_filter: [440, 500, 550],
+    }).exec({
+        // An unexpected error occurred.
+        error: (err) => {
+            res.send(err);
+        },
+        // OK.
+        success: (result) => {
+            res.render('test.ejs', { games: result.games });
+        }
+    });
+});
 
 
 router.get('/:id', async (req, res) => {

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <title></title>
+  </head>
+  <body>
+
+  <div id="topbar">
+
+  </div>
+
+  <div id="container">
+    
+    <div id="entryContainer">
+    <h1>My Games</h1>
+    <% for (game of games) { %>
+      <div class="entry">
+      <p><%= game.name %></p>
+      <img src="http://media.steampowered.com/steamcommunity/public/images/apps/<%= game.appid %>/<%= game.img_logo_url %>.jpg">
+      </div>
+    <% } %>
+
+    </div>
+
+  </div>  
+  </body>
