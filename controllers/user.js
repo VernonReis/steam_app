@@ -231,6 +231,24 @@ router.get('/test', async (req, res) => {
     });
 });
 
+router.get('/test/:id', async (req, res) => {
+    Steam.getOwnedGames({
+        steamid: String(req.params.id),
+        key: apiKey,
+        include_appinfo: 1,
+        appids_filter: [440, 500, 550],
+    }).exec({
+        // An unexpected error occurred.
+        error: (err) => {
+            res.send(err);
+        },
+        // OK.
+        success: (result) => {
+            res.render('test.ejs', { games: result.games });
+        }
+    });
+});
+
 
 router.get('/:id', async (req, res) => {
     Steam.getOwnedGames({
