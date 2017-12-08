@@ -243,8 +243,9 @@ router.get('/test/game/:id', async (req, res) => {
             img: game.data.header_image,
             rating: 10,
             description: game.data.short_description,
-            id: game.data.steam_appid
         }
+
+        console.log(myGame.id);
 
         res.render('show.ejs', {game: myGame});
     });
