@@ -26,7 +26,7 @@
         <div class="gameStat" >Rating: <%= game.rating %></div>
 
         <div class="gameImage">
-          <% if (game.img != "")  %>
+          <% if (game.img != "") {  %>
               <img src="<%= game.img %>" >
               <% } else { %>
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/450px-No_image_available.svg.png">
