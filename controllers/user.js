@@ -231,6 +231,25 @@ router.get('/test', async (req, res) => {
     });
 });
 
+
+router.get('/test/game/:id', async (req, res) => {
+    allUsers = request("http://store.steampowered.com/api/appdetails?appids="+req.params.id, (error,response,body) => {
+        test = JSON.parse(body);
+
+        game = test[req.params.id];
+
+        myGame = {
+            title: game.data.name,
+            img: game.data.header_image,
+            rating: 10,
+            description: game.data.short_description,
+        }
+
+        res.render('show.ejs', {game: myGame});
+    });
+    // res.send(allUsers);
+});
+
 router.get('/test/:id', async (req, res) => {
     Steam.getOwnedGames({
         steamid: String(req.params.id),
@@ -248,6 +267,8 @@ router.get('/test/:id', async (req, res) => {
         }
     });
 });
+
+
 
 
 router.get('/:id', async (req, res) => {
