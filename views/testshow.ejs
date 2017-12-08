@@ -37,20 +37,18 @@
 
 
 
-          <form action="/user/games/edit/<%= game._id %>" method="get">
-            <input class="buttonGreen" type="submit" value="Edit">
-          </form>
 
-          <form action="/user/games/delete?_method=DELETE" method="post">
-            <input class="buttonGreen" type="submit" value="Remove from library">
-            <input type="hidden" name="id" value="<%= game._id %>">
-          </form>
 
 
           <br/>
-          <form action="/user/games/" method="get">
-            <input class="buttonGreen" type="submit" value="Back">
-          </form>
+            <button class="buttonGreen" onclick="goBack()" type="submit" >Back</button>
+
+
+          <script>
+function goBack() {
+    window.history.back();
+}
+</script>
     </div>
 
   </div>  
