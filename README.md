@@ -3,3 +3,7 @@ My project was a web site wher users can create an account and add/edit/remove e
 The technologies I utilized included the required node.js, mongoose, express, and ejs packages; but I also included bcrypt and incorporated a user authorization system with login and password.  I had plans to implement partial EJS for certain elements of the page but I spent too long chasing the pipe dream that was getting API to work and ran out of time.  The lesson I learned from this was to better balance the time I spend on researching a feature and actually working on the features required of an MVP project.  My initial thought was that I didn't want to have to rework my database after making discoveries about the web API but as I discovered when I actually had to change my database structure for other reasons, that wouldn't have been a concern.
 
 The one other feature that I would have liked to include would have been a one to many to many database relationship where users could have multiple "lists" of games they owned, for example one being their game library, one being a list of favorite games, and one being a whishlist of games to buy.
+
+
+UPDATE:
+I managed to implement the API a bit.  It doesn't work with the database but I think it demonstrates that I actually learned something trying to get it to work all week.  See the /user/test page
